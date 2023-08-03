@@ -202,7 +202,7 @@ function! s:IndentLinesEnable()
         execute 'syntax match IndentLine /\t\zs / contained conceal cchar=' . g:indentLine_char
     else
         let pattern = line('$') < g:indentLine_maxLines ? 'v' : 'c'
-        for i in range(s:indentSpace+1, s:indentSpace * s:indentLine_indentLevel + 1, s:indentSpace)
+        for i in range(s:indentSpace+1, s:indentSpace * g:indentLine_indentLevel + 1, s:indentSpace)
             execute 'syntax match IndentLine /\%(^\s\+\)\@<=\%'.i.pattern.' / containedin=ALL conceal cchar=' . g:indentLine_char
         endfor
     endif
